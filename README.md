@@ -1,6 +1,6 @@
 # Bootcamp JavaScript
 
-## Check Here ==> https://jakubfolta.github.io/Learning-Git/
+## Check Here ==> https://jakubfolta.github.io/Bootcamp-JavaScript/
 
 ## Technologies
 * HTML5, CSS3, Sass, JavaScript
