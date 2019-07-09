@@ -9,11 +9,12 @@ var userName;
 
 button.addEventListener('click', function(){
 	userName = window.prompt('What is your name?');
-	if (userName == '') {
-  	    output.innerHTML = 'Hello stranger' + '<br><br>' + output.innerHTML;
+    if (userName == '') {
+        output.innerHTML = 'Hello stranger' + '<br><br>' + output.innerHTML;
     }
 
-    if (userName == null) {
-	   output.innerHTML = 'You have to enter your name!' + '<br><br>' + output.innerHTML;
+    else {
+       output.innerHTML = 'You have to enter your name!' + '<br><br>' + output.innerHTML;
     }
+
 });
