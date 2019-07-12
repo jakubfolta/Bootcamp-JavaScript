@@ -6,6 +6,7 @@ body {
 button {
 	display: inline-block;
     padding: 11px 50px;
+    margin: 10px 0;
     max-width: 100%;
 
 	font-size: 16px;
@@ -16,10 +17,10 @@ button {
 
 	color: #fff;
     background-color: #02ac46;
-	border: 2px solid #02ac46;
+	border: none;
     border-radius: 4px;
 
-	transition: color .3s, background-color .3s;
+	transition: color .3s;
 
     cursor: pointer;
 	outline: 0!important;
@@ -31,4 +32,12 @@ button {
 		color: #02ac46;
 		background-color: #fff;
 	}
+}
+
+.celcius {
+    background-color: hsl(0, 100%, 50%);
+}
+
+.fahrenheit {
+    background-color: hsl(240 , 100%, 50%);
 }
