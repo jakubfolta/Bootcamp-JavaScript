@@ -13,9 +13,20 @@ var fTemperature;
 var regex = /^[0-9]+$/;
 
 var zero = 0;
-var warmer = 10;
+var warm = 10;
 var hot = 20;
 var veryHot = 49;
+
+var answer1 = 'This temperature is a melting point of ice.' + '<br><br>' + output.innerHTML;
+var answer2 = 'Most bacteria do not live above this temperature.' + '<br><br>' + output.innerHTML;
+var answer3 = 'Summer is starting!' + '<br><br>' + output.innerHTML;
+var answer4 = 'We have winter right now.' + '<br><br>' + output.innerHTML;
+var answer5 = 'Winter is over, time for spring!.' + '<br><br>' + output.innerHTML;
+
+
+var answer = function(text) {
+    output.innerHTML = text
+}
 
 var cTempConvert = function(number) {
     number = (number * 1.8) + 32;
@@ -41,20 +52,38 @@ button.addEventListener('click', function() {
         fTemperature = cTempConvert(temperature);
         output.innerHTML = 'Celsius temperature is ' + temperature + '°C' + '\n' +
         ' and Fahrenheit temperature is ' + fTemperature + '°F' + '<br><br>';
-        switch (temperature == 0) {
-            output.innerHTML = 'This temperature is a melting point of ice.' + '<br><br>' + output.innerHTM;
+        switch (true) {
+            case (temperature == zero):
+                answer = answer(answer1);
+                break;
+            case (temperature >= hot):
+                answer = answer(answer3);
+                break;
+            case (temperature > veryHot):
+                answer = answer(answer2);
+                break;
+            case (temperature <= warm):
+                answer = answer(answer4);
+                break;
+            case (warm < temperature < hot):
+                answer = answer(answer5);
+                break;
         }
-        else if (fTemperature > 120) {
-            output.innerHTML = 'Most bacteria do not live above this temperature.' + '<br><br>' + output.innerHTML;
+
+        if (temperature == zero) {
+
         }
-        else if (temperature >= 20) {
-            output.innerHTML = 'Summer is starting!' + '<br><br>' + output.innerHTML;
+        else if (temperature > veryHot) {
+
         }
-        else if (temperature <= 10) {
-            output.innerHTML = 'We have winter right now.' + '<br><br>' + output.innerHTML;
+        else if (temperature >= hot) {
+
         }
-        else if (10 < temperature < 20) {
-            output.innerHTML = 'Winter is over, time for spring!.' + '<br><br>' + output.innerHTML;
+        else if (temperature <= warm) {
+            \;
+        }
+        else if (warm < temperature < hot) {
+            ;
         }
     }
 });
