@@ -41,7 +41,7 @@ var fTempConvert = function(number) {
 button.addEventListener('click', function() {
     temperature = Number(window.prompt('What\'s the temperature? Enter the number: '));
 
-    if (typeof temperature !== 'number' && isNaN(temperature) === true) {
+    if (typeof temperature === 'number' && isNaN(temperature) === true) {
         output.innerHTML = 'You have to enter the number!' + '<br><br>';
     }
     else {
