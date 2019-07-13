@@ -17,14 +17,19 @@ var warm = 10;
 var hot = 20;
 var veryHot = 49;
 
+var answer
 var answer1 = 'This temperature is a melting point of ice.' + '<br><br>' + output.innerHTML;
 var answer2 = 'Most bacteria do not live above this temperature.' + '<br><br>' + output.innerHTML;
 var answer3 = 'Summer is starting!' + '<br><br>' + output.innerHTML;
 var answer4 = 'We have winter right now.' + '<br><br>' + output.innerHTML;
 var answer5 = 'Winter is over, time for spring!' + '<br><br>' + output.innerHTML;
+var answer6 = 'I don\'t have info about this temperature.'
 
+var checkAnswer = function(number) {
+    
+}
 
-var answer = function(text) {
+var giveAnswer = function(text) {
     output.innerHTML = text;
 }
 
@@ -39,35 +44,37 @@ var fTempConvert = function(number) {
 }
 
 button.addEventListener('click', function() {
-    temperature = window.prompt('What\'s the temperature? Enter the number: ');
+    temperature = Number(window.prompt('What\'s the temperature? Enter the number: '));
 
-    if (!temperature.match(regex)) {
+    if (typeof temperature == 'number' && isNaN(temperature) == true) {
         output.innerHTML = 'You have to enter the number!' + '<br><br>';
     }
     else {
         fTemperature = cTempConvert(temperature);
         output.innerHTML = 'Celsius temperature is ' + temperature + '°C' + '\n' +
         ' and Fahrenheit temperature is ' + fTemperature + '°F' + '<br><br>';
+        switch (true) {
+            case (temperature == zero):
+            answer = giveAnswer(answer1);
+            break;
+            case (temperature >= hot):
+            answer = giveAnswer(answer3);
+            break;
+            case (temperature > veryHot):
+            answer = giveAnswer(answer2);
+            break;
+            case (temperature <= warm):
+            answer = giveAnswer(answer4);
+            break;
+            case (warm < temperature < hot):
+            answer = giveAnswer(answer5);
+            break;
+            default:
+            answer = giveAnswer();
+        }
     }
 });
 
-switch (false) {
-    case (temperature == zero):
-    answer = answer(answer1);
-    break;
-    case (temperature >= hot):
-    answer = answer(answer3);
-    break;
-    case (temperature > veryHot):
-    answer = answer(answer2);
-    break;
-    case (temperature <= warm):
-    answer = answer(answer4);
-    break;
-    case (warm < temperature < hot):
-    answer = answer(answer5);
-    break;
-}
 
 fbutton.addEventListener('click', function() {
     fTemperature = window.prompt('What\'s the temperature? Enter the number: ');
