@@ -17,12 +17,17 @@ var warm = 10;
 var hot = 20;
 var veryHot = 49;
 
+var answer
 var answer1 = 'This temperature is a melting point of ice.' + '<br><br>' + output.innerHTML;
 var answer2 = 'Most bacteria do not live above this temperature.' + '<br><br>' + output.innerHTML;
 var answer3 = 'Summer is starting!' + '<br><br>' + output.innerHTML;
 var answer4 = 'We have winter right now.' + '<br><br>' + output.innerHTML;
 var answer5 = 'Winter is over, time for spring!' + '<br><br>' + output.innerHTML;
+var answer6 = 'I don\'t have info about this temperature.'
 
+var checkAnswer = function(number) {
+    
+}
 
 var giveAnswer = function(text) {
     output.innerHTML = text;
@@ -47,7 +52,7 @@ button.addEventListener('click', function() {
     else {
         fTemperature = cTempConvert(temperature);
         output.innerHTML = 'Celsius temperature is ' + temperature + '°C' + '\n' +
-        ' and Fahrenheit temperature is ' + fTemperature + '°F' + '<br><br>' + output.innerHTML;
+        ' and Fahrenheit temperature is ' + fTemperature + '°F' + '<br><br>';
         switch (true) {
             case (temperature == zero):
             answer = giveAnswer(answer1);
@@ -64,6 +69,8 @@ button.addEventListener('click', function() {
             case (warm < temperature < hot):
             answer = giveAnswer(answer5);
             break;
+            default:
+            answer = giveAnswer();
         }
     }
 });
