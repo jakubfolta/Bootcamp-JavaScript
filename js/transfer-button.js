@@ -24,7 +24,7 @@ var answer4 = 'We have winter right now.' + '<br><br>' + output.innerHTML;
 var answer5 = 'Winter is over, time for spring!' + '<br><br>' + output.innerHTML;
 
 
-var answer = function(text) {
+var giveAnswer = function(text) {
     output.innerHTML = text;
 }
 
@@ -41,33 +41,33 @@ var fTempConvert = function(number) {
 button.addEventListener('click', function() {
     temperature = Number(window.prompt('What\'s the temperature? Enter the number: '));
 
-    if (typeof temperature === 'number' && isNaN(temperature) === true) {
+    if (typeof temperature == 'number' && isNaN(temperature) == true) {
         output.innerHTML = 'You have to enter the number!' + '<br><br>';
     }
     else {
         fTemperature = cTempConvert(temperature);
         output.innerHTML = 'Celsius temperature is ' + temperature + '°C' + '\n' +
-        ' and Fahrenheit temperature is ' + fTemperature + '°F' + '<br><br>';
+        ' and Fahrenheit temperature is ' + fTemperature + '°F' + '<br><br>' + output.innerHTML;
+        switch (true) {
+            case (temperature == zero):
+            answer = giveAnswer(answer1);
+            break;
+            case (temperature >= hot):
+            answer = giveAnswer(answer3);
+            break;
+            case (temperature > veryHot):
+            answer = giveAnswer(answer2);
+            break;
+            case (temperature <= warm):
+            answer = giveAnswer(answer4);
+            break;
+            case (warm < temperature < hot):
+            answer = giveAnswer(answer5);
+            break;
+        }
     }
 });
 
-switch (false) {
-    case (temperature == zero):
-    answer = answer(answer1);
-    break;
-    case (temperature >= hot):
-    answer = answer(answer3);
-    break;
-    case (temperature > veryHot):
-    answer = answer(answer2);
-    break;
-    case (temperature <= warm):
-    answer = answer(answer4);
-    break;
-    case (warm < temperature < hot):
-    answer = answer(answer5);
-    break;
-}
 
 fbutton.addEventListener('click', function() {
     fTemperature = window.prompt('What\'s the temperature? Enter the number: ');
