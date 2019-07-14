@@ -18,19 +18,24 @@ var hot = 20;
 var veryHot = 49;
 
 var answer
-var answer1 = 'This temperature is a melting point of ice.' + '<br><br>' + output.innerHTML;
-var answer2 = 'Most bacteria do not live above this temperature.' + '<br><br>' + output.innerHTML;
-var answer3 = 'Summer is starting!' + '<br><br>' + output.innerHTML;
-var answer4 = 'We have winter right now.' + '<br><br>' + output.innerHTML;
-var answer5 = 'Winter is over, time for spring!' + '<br><br>' + output.innerHTML;
-var answer6 = 'I don\'t have info about this temperature.'
+var answer1 = 'This temperature is a melting point of ice.' + '<br><br>';
+var answer2 = 'Most bacteria do not live above this temperature.' + '<br><br>';
+var answer3 = 'Summer is starting!' + '<br><br>';
+var answer4 = 'We have winter right now.' + '<br><br>';
+var answer5 = 'Winter is over, time for spring!' + '<br><br>';
+var answer6 = 'I don\'t have info about this temperature.';
 
 var checkAnswer = function(number) {
-    
+    return number == zero ? answer1
+        : number > veryHot ? answer2
+        : number >= hot ? answer3
+        : number <= warm ? answer4
+        : warm < number < hot ? answer5
+        : answer6
 }
 
 var giveAnswer = function(text) {
-    output.innerHTML = text;
+    return output.innerHTML = text + output.innerHTML;
 }
 
 var cTempConvert = function(number) {
@@ -44,34 +49,17 @@ var fTempConvert = function(number) {
 }
 
 button.addEventListener('click', function() {
-    temperature = Number(window.prompt('What\'s the temperature? Enter the number: '));
+    temperature = parseInt(window.prompt('What\'s the temperature? Enter the number: '));
 
-    if (typeof temperature == 'number' && isNaN(temperature) == true) {
+    if (isNaN(temperature) == true) {
         output.innerHTML = 'You have to enter the number!' + '<br><br>';
     }
     else {
         fTemperature = cTempConvert(temperature);
         output.innerHTML = 'Celsius temperature is ' + temperature + '°C' + '\n' +
         ' and Fahrenheit temperature is ' + fTemperature + '°F' + '<br><br>';
-        switch (true) {
-            case (temperature == zero):
-            answer = giveAnswer(answer1);
-            break;
-            case (temperature >= hot):
-            answer = giveAnswer(answer3);
-            break;
-            case (temperature > veryHot):
-            answer = giveAnswer(answer2);
-            break;
-            case (temperature <= warm):
-            answer = giveAnswer(answer4);
-            break;
-            case (warm < temperature < hot):
-            answer = giveAnswer(answer5);
-            break;
-            default:
-            answer = giveAnswer();
-        }
+
+        giveAnswer(checkAnswer(temperature));
     }
 });
 
