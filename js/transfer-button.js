@@ -1,50 +1,58 @@
 'use strict'
 
-var output = document.getElementById('greeter-output');
-output.innerHTML = 'Click the red button to check temperature in Fahrenheit scale.' + '<br><br>';
+var output, foutput;
 
-var foutput = document.getElementById('greeter-foutput');
+output = document.getElementById('greeter-output')
+foutput = document.getElementById('greeter-foutput')
+
+output.innerHTML = 'Click the red button to check temperature in Fahrenheit scale.' + '<br><br>';
 foutput.innerHTML = 'Click the blue button to check temperature in Celcius scale.' + '<br><br>';
 
-var button = document.getElementById('greeter-button');
-var fbutton = document.getElementById('greeter-fbutton');
+var button, fbutton, rbutton;
 
-var rbutton;
+button = document.getElementById('greeter-button');
+fbutton = document.getElementById('greeter-fbutton');
 
-var temperature;
-var fTemperature;
+var temperature, fTemperature, zero, warm, hot, veryHot, fahrenheitMulti, fahrenheitNumb, celciusDivide, answers;
 
-var zero = 0;
-var warm = 10;
-var hot = 20;
-var veryHot = 49;
+zero = 0;
+warm = 10;
+hot = 20;
+veryHot = 49;
+fahrenheitMulti = 1.8;
+fahrenheitNumb = 32;
+celciusDivide = 5/9;
 
-var answer1 = 'This temperature is a melting point of ice.' + '<br><br>';
-var answer2 = 'Most bacteria do not live above this temperature.' + '<br><br>';
-var answer3 = 'Summer is starting!' + '<br><br>';
-var answer4 = 'We have winter right now.' + '<br><br>';
-var answer5 = 'Winter is over, time for spring!' + '<br><br>';
+answers = [
+    'This temperature is a melting point of ice.' + '<br><br>',
+    'Most bacteria do not live above this temperature.' + '<br><br>',
+    'Summer is starting!' + '<br><br>',
+    'We have winter right now.' + '<br><br>',
+    'Winter is over, time for spring!' + '<br><br>'
+]
 
-var checkAnswer = function(number) {
-    return number == zero ? answer1
-        : (number < veryHot && number >= hot) ? answer3
-        : number <= warm ? answer4
-        : (warm < number && number < hot) ? answer5
-        : answer2;
+var checkAnswer, giveAnswer, cTempConvert, fTempConvert;
+
+checkAnswer = function(number) {
+    return number == zero ? answers[0]
+        : (number < veryHot && number >= hot) ? answers[2]
+        : number <= warm ? answers[3]
+        : (warm < number && number < hot) ? answers[4]
+        : answers[1];
 }
 
-var giveAnswer = function(text) {
+giveAnswer = function(text) {
     return rbutton ? output.innerHTML = text + output.innerHTML
         : foutput.innerHTML = text + foutput.innerHTML;
 }
 
-var cTempConvert = function(number) {
-    number = (number * 1.8) + 32;
+cTempConvert = function(number) {
+    number = (number * fahrenheitMulti) + fahrenheitNumb;
     return number;
 }
 
-var fTempConvert = function(number) {
-    number =(number - 32) * (5/9);
+fTempConvert = function(number) {
+    number =(number - fahrenheitNumb) * (celciusDivide);
     return number;
 }
 
