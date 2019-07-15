@@ -34,7 +34,7 @@ var checkAnswer = function(number) {
 }
 
 var giveAnswer = function(text) {
-    return rbutton == true ? output.innerHTML = text + output.innerHTML
+    return rbutton ? output.innerHTML = text + output.innerHTML
         : foutput.innerHTML = text + foutput.innerHTML;
 }
 
